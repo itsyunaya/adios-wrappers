@@ -1,4 +1,4 @@
-{ types, ... }:
+{ types, ... } @ adios:
 {
   inputs = {
     mkWrapper.from = { parent }: parent.mkWrapper;
@@ -16,6 +16,7 @@
 
         Disjoint with the `configFile` option.
       '';
+      mergeFunc = adios.lib.merge.attrs.recursively;
     };
     configFile = {
       type = types.pathLike;
